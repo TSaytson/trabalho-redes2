@@ -3,12 +3,57 @@ body {
     background-image: url(./Imagens/Background-InterplanetaryNetwork.jpg)
 }   
 
+div {
+    background-color: lightgray;
+    border: 5px solid cadetblue;
+    padding: 50px;
+    margin-left: 5px;
+    margin-top: 3px;
+    padding-top: 25px;
+}
+
+.left {
+    width: 800px;
+    float: left;
+}
+
+.right {
+    width: 300px;
+    align-content: center;
+    float: right;
+}
+
+.bottomright {
+    position: absolute;
+    bottom: 1px;
+    left: 16px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 h1 {
     color:white;
+    font-size: 35px;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    font-size: 30px;
+}
+
+h3 {
+    color:black;
+    font-size: 25px;
 }
 
 p {
-     color:white;
+     color:black;
+     font-size: 20px;
  }
     ul {
         list-style-type: none;
