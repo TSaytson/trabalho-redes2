@@ -11,55 +11,106 @@
     <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="introduction.html">Introdução</a></li>
-        <li><a href="mfv.html">MFV - Most Frequently Visible</a></li>
-        <li><a href="let.html">LET - Last Encountered Time</a></li>
+        <li><a href="spray.html">Spray and Wait Rounting Protocol</a></li>
+        <li><a href="epidemic.html">Epidemic Routing Protocol</a></li>
         <li><a href="prophet.html">PROPHET - Probability Routing Protocol using History of Encounters and Transivity</a></li>
         <li><a class ="active" href="forwarding.html">Forwarding Strategy</a></li>
         <li style="float:right"><a class="references" href="references.html">Referências</a></li>
     </ul>
     <div class="left">
         <h2>Estratégias de encaminhamento</h2>
-        <h3>Epidemic Routing</h3>
-            <p>
-                Primeiro protocolo de roteamento em redes DTN.
-
-            </p>
-        <h3>Tree Based Flooding</h3>
-            <p>
-                Inundação baseada em árvore
-            </p>
+        <h3>LET - Last Encountered Time</h3>
+        <p>
+            O protocolo LET (Última Vez Encontrado) funciona enviando as mensagens para o 
+            nó que estabeleceu conexão com o nó de destino mais
+            recentemente, a comparação também é feita com o nó 
+            atual. Se há muitos nós que tiveram contato recentemente
+            com o nó alvo, então o pacote é repassado a qualquer um 
+            desses. Se nenhum nó teve contato com o nó de
+            destino dentro de um intervalo de tempo, então a 
+            mensagem não é transmitida e fica armazenada na fonte.<br>
+        </p>
+        <h3>MFV - Most Frequently Visible</h3>
+        <p>O protocolo MFV (Visto Mais Frequentemente) funciona 
+            utilizando o histórico do quão frequentemente os 
+            nós entram em contato.
+            A mensagem sai do nó de origem e passa por um nó de 
+            relay que mais frequentemente se comunica com o nó de 
+            destino. A frequência com a qual os nós entram em 
+            contato é medida através da razão do tempo 
+            em que ficaram conectados sobre o tempo em que a 
+            rede esteve ativa. Quanto maior o tempo de coleta 
+            do histórico, com maior eficiência no que diz 
+            respeito à consumo de banda e de processamento o 
+            protocolo funcionará.
+            <br>
+        </p>
         <h3>Single Hop Transmission</h3>
             <p>
-                Transmissão de salto único
+                Neste protocolo de roteamento o dado pode ser
+                transmitido da origem ao destino em um único salto.
+                Ou seja, o nó de origem pode transmitir a mensagem 
+                ao nó de destino sem passar por nós intermediários, 
+                chamados nós de relay. A vantagem deste protocolo 
+                é a baixa exigência de recursos para transmitir a 
+                mensagem e, consequemente, baixo custo. 
+                As principais desvantagens são o atraso e a 
+                baixa probabilidade na transmissão de salto único.
             </p>
         <h3>Two Hop Relay</h3>
             <p>
-                Retransmissão com dois saltos
+                Nessa abordagem existem dois saltos entre a fonte 
+                e o destino. Se há N nós conectados na rede, N 
+                cópias serão geradas para transmitir os dados da 
+                origem ao destino enviando-as a outros nós que 
+                tentarão fazer isso. A transmissão de dois saltos 
+                aumenta a probabilidade de entrega da mensagem.
+                Porém também aumenta o consumo de largua de banda,
+                assim como o consumo de armazenamento.
             </p>
-        <h3>Spray and Wait</h3>
+        <h3>Tree Based Flooding</h3>
             <p>
-                Protocolo que consiste em enviar e aguardar
-                confirmação
+                Nesse protocolo de roteamento baseado em inundação 
+                em árvore pela fonte, cópias da mensagem são 
+                feitas e enviadas a outros nós. É mantida informação 
+                a respeito do número de cópias feitas pelos nós de 
+                relay e que foram enviadas a outros nós. Os nós de 
+                relay criam uma estrutura em árvore a partir da fonte.
             </p>
         <h3>Max Prop</h3>
             <p>
-                Protocolo de roteamento baseado em
-                probabilidade.
+                Protocolo de roteamento baseado em probabilidade.
+                Cada nó estabelece a probabilidade de alcançar o 
+                nó de destino em determinado número de saltos. Os
+                nós trocam esses valores com nós vizinhos. A 
+                probabilidade é usada para calcular o custo do 
+                caminho até o destino.<br>
+                Quando o buffer enche, o MaxProp escolhe a mensagem
+                com prioridade mais alta e a transmite com o menor
+                número de saltos. MaxProp possui baixa performance 
+                quando os nós possuem pouco espaço de buffer.
             </p>
         <h3>Location Based Routing Strategy</h3>
             <p>
                 O roteamento baseado em localização requer
-                o conhecimento prévio sobre onde estão os nós
-                na rede.
+                o conhecimento prévio sobre a localização dos nós
+                na rede. A fórmula de distância é usada para 
+                estimar o custo de enviar mensagens de um nó a 
+                outro. Não é necessário armazenar informação 
+                nas tabelas de roteamento. O melhor caminho é 
+                estimado com base na origem, no destino e em nós 
+                intermediários. A performance é ruim quando os 
+                nós estão se movimentando.
             </p>
         <h3>Label Based Forwarding Strategy</h3>
             <p>
                 Essa estratégia consiste em criar grupos de 
                 nós baseados em rótulos chamados 
-                <i>grupos rotulados</i>. Esse grupos são 
+                <i>grupos rotulados</i>. Esses grupos são 
                 escolhidos como próximo nó para transmissão
-                e encaminhamento de dados. Contudo, consome
-                quantidades substanciais de largura de banda.
+                dos dados, e então os dados são encaminhados. 
+                Contudo, consome quantidades substanciais de 
+                largura de banda.
             </p>
     </div>
 </body>

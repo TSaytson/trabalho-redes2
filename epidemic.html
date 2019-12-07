@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>Redes tolerantes a atrasos</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+<body>
+
+    <h1>DTN - Delay Tolerant Networks</h1>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="introduction.html">Introdução</a></li>
+        <li><a href="spray.html">Spray and Wait Rounting Protocol</a></li>
+        <li><a class="active" href="epidemic.html">Epidemic Routing Protocol</a></li>
+        <li><a href="prophet.html">PROPHET - Probabilistic Routing Protocol using History of Encounters and Transivity</a></li>
+        <li><a href="forwarding.html">Forwarding Strategy</a></li>
+        <li style="float:right"><a class="references" href="references.html">Referências</a></li>
+    </ul>
+    <div class="left">
+            <h2>Epidemic Routing Protocol</h2>
+            <p>
+                Primeiro protocolo de roteamento em redes DTN.
+                Possui um algoritmo de roteamento baseado em inundação.
+                Os principais objetivos do roteamento epidêmico são:
+                1) Maximizar a taxa de entrega das mensagens,
+                2) Minimizar a latência das mensagens e
+                3) Minimizar os recursos totais consumidos para
+                entrega das mensagens.
+                Neste esquema de roteamento, o nó que recebe a 
+                mensagem encaminha uma cópia para cada outro nó 
+                que encontra. Então a mensagem é difundida na 
+                rede por nós móveis até que todos os nós tenham
+                os mesmos dados, embora não haja garantia de 
+                entrega das mensagens. Tal algoritmo seria 
+                análogo a um melhor-esforço para alcançar o 
+                destino.<br>
+                Cada mensagem e seu identificador único são 
+                armazenados no buffer dos nós, e a sua lista é 
+                chamada de vetor de sumário. Quando nós 
+                adjacentes se encontram, trocam e comparam seus
+                vetores de sumário para identificar quais mensagens
+                não possuem e requisitá-las. O esquema é 
+                apresentado na figura 1.<br>
+                <br><img src="Imagens/epidemic_routing_method.png" style="width: 700px; height: 400px" alt="Método de roteamento epidêmico">
+                <p style="text-align: center">Adaptado de: "Performance of Efficient Routing Protocol in Delay Tolerant Network: A Comparative Survey" M. Namita e M. Shah (2014)</p>
+            <p>
+                Esse tipo de roteamento resulta em um uso
+                ineficiente dos recursos de rede como energia e 
+                banda, devido às múltiplas cópias da mesma 
+                mensagem, além de memória. É perceptível que o 
+                roteamento epidêmico fornece difusão rápida das 
+                cópias, e levando a um tempo de entrega ótimo.
+                Contudo, a inundação também provoca aumento na 
+                quantidade de pacotes de controle e, portanto,
+                no congestionamento da rede.<br><br>
+                O roteamento epidêmico é indicado na falta de 
+                algoritmos mais eficientes. É especialmente útil
+                quando há pouca ou nenhuma informação sobre a 
+                topologia da rede e os padrões de mobilidade dos 
+                nós.
+            </p>
+    </div>
+</body>
+            
+</html>

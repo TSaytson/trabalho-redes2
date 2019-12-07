@@ -11,8 +11,8 @@
     <ul>
         <li><a href="index.html">Início</a></li>
         <li><a class="active" href="introduction.html">Introdução</a></li>
-        <li><a href="mfv.html">MFV - Most Frequently Visible</a></li>
-        <li><a href="let.html">LET - Last Encountered Time</a></li>
+        <li><a href="spray.html">Spray and Wait Rounting Protocol</a></li>
+        <li><a href="epidemic.html">Epidemic Routing Protocol</a></li>
         <li><a href="prophet.html">PROPHET - Probability Routing Protocol using History of Encounters and Transivity</a></li>
         <li><a href="forwarding.html">Forwarding Strategy</a></li>
         <li style="float:right"><a class="references" href="references.html">Referências</a></li>
@@ -21,26 +21,78 @@
     <div class="left">
         <h2>Introdução</h2>
             <h3>Redes tolerantes a atrasos<br></h3>
-            <p>Redes interestelares têm como
-                características a qualidade ruim de conexão
-                e a interrupção frequente dos enlaces e
-                das estações.<br>
-                Nesse contexto, DTN (Delay Tolerant Network)
-                foi uma proposição para realizar
-                armazenamento-e-reenvio de forma eficiente.
-                Testada pela NASA em 2008, a DTN usa
-                Contact Graph Routing (CGR), que requer
-                uma plano de contato (CP) entre dois nós 
-                adjacentes da rede DTN.<br>
-                Muitos trabalhos de pesquisa focaram em 
-                otimizar o algoritmo de roteamento dos 
-                satélites de DTN baseado no CGR. Entretanto,
-                um trabalho ávido pode ocorrer para resolver
-                o problema de encontrar o melhor caminho.<br>
-                <h3>Alguns conceitos comumente usados
-                    nos algoritmos anti-colisão.
-                </h3>
+            <p>
+            Redes DTN têm como
+            características, que serão melhor abordadas 
+            mais tarde, a qualidade ruim de conexão
+            e a interrupção frequente dos enlaces e
+            das estações.<br>
+            Nesse contexto, DTN (Delay Tolerant Network)
+            foi uma proposição para realizar
+            armazenamento-e-reenvio de forma eficiente.
             </p>
+
+            <img src="./Imagens/graph_dtn.png" style="width:700px; height:400px" alt="Grafo de rede DTN">
+            <p style="text-align: center">Adaptado de: "The Performance of DTN Routing Protocols: A Comparative Survey" A. Alaoui, S. Agoujil, M. Hajar, Y. Qaraai"</p>
+
+            <h3>Características das redes DTN:<br>
+                <h4>Conexão intermitente:<br></h4>
+                <p>
+                    Devido à mobilidade dos nós, 
+                    frequentemente há falha na conexão
+                    em uma DTN, resultando em uma mudança
+                    contínua na topologia da rede. 
+                    Logo, a rede mantem status de 
+                    conexões intermitentes e conexões
+                    parciais, o que impede a garantia 
+                    de alcançar uma rota fim a fim.<br>
+                </p>
+                <h4>Recursos limitados:<br></h4>
+                <p>
+                    Os nós das DTNs são móveis e, portanto,
+                    possuem recursos limitados. Dito isso,
+                    é preciso garantir que enquanto não há
+                    conexão com o nó seguinte a mensagem será
+                    armazenada de forma segura no nó atual.
+                    No entanto, outras mensagens também podem 
+                    ter que ser armazenadas, e com a limitação 
+                    da capacidade de armazenamento, o buffer 
+                    dos dados fica restrito.<br>
+                </p>
+                <h4>Alto atraso e baixa taxa de dados:<br></h4>
+                <p>
+                    Atrasos a cada salto aumentam o atraso total
+                    fim a fim, e isso se deve ao fato de conexões
+                    DTN intermitentes ficarem inalcançáveis por
+                    períodos muito longos, o que leva a baixas 
+                    taxas de dados e apresenta a característica
+                    assimétrica dos altos e baixos em tais taxas.
+                </p>
+            <h3>Classificação de protocolos de roteamento:<br></h3>
+                <p>
+                    Protocolos de roteamento devem encontrar boas 
+                    rotas entre uma origem e um destino na rede.
+                    Existem dois tipos de procolos de roteamento, 
+                    que são:
+                    <h4>A. Roteamento Pro-Ativo</h4>
+                    <p>
+                        Neste tipo de roteamento, as informações 
+                        de roteamento e as posições dos nós são 
+                        definidas previamente e são armazenadas
+                        nas tabelas de roteamento. As melhores 
+                        rotas podem ser encontradas com baixo 
+                        atraso e com menor consumo de recursos.
+                    </p>
+                    <h4>B. Roteamento Reativo</h4>
+                    <p>
+                        Nessa abordagem não são necessárias 
+                        informações predefinidas. Essa técnica 
+                        encontra uma caminho sobre demanda de 
+                        requisições para rotear pacotes através 
+                        de inundação da rede, o que aumenta a 
+                        latência para encontrar os caminhos.
+                    </p>
+                </p>
     </div>
 </body>
 

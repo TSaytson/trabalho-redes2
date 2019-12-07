@@ -11,19 +11,83 @@
     <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="introduction.html">Introdução</a></li>
-        <li><a href="mfv.html">MFV - Most Frequently Visible</a></li>
-        <li><a href="let.html">LET - Last Encountered Time</a></li>
-        <li><a class="active" href="prophet.html">PROPHET - Probability Routing Protocol using History of Encounters and Transivity</a></li>
+        <li><a href="spray.html">Spray and Wait Rounting Protocol</a></li>
+        <li><a href="epidemic.html">Epidemic Routing Protocol</a></li>
+        <li><a class="active" href="prophet.html">PROPHET - Probabilistic Routing Protocol using History of Encounters and Transivity</a></li>
         <li><a href="forwarding.html">Forwarding Strategy</a></li>
         <li style="float:right"><a class="references" href="references.html">Referências</a></li>
     </ul>
     <div class="left">
-        <h2>PROPHET - Protocolo de Roteamento Probabilístico utilizando Histórico de Encontros e Transitividade</h2>
-        <p>O protocolo PRoPHET funciona de acordo com a 
-            previsibilidade de entrega, transitividade e com o 
-            quão antigo é o pacote. Se um nó visitou muitas vezes
-            uma determinada localidade, então há uma possibilidades
-            de que a visite novamente.<br>
+        <h2>PROPHET - Probabilistic ROuting Protocol using History of Encounter and Transitivity</h2>
+        <p>O protocolo PROPHET parte do pressuposto básico de que 
+            a mobilidade do nó não é aleatória, mas que possui 
+            um comportamento repetitivo. No esquema do protocolo,
+            é assumido que os nós tendem a passar mais vezes por 
+            alguns locais do que em outros, isto é, se um nó 
+            visitou muitas vezes uma determinada localidade, 
+            então há grande probabilidade de que a visite novamente.
+            Sendo assim, um resultado plausível é o de que nós que
+            se encontraram anteriormente estão sujeitos a se 
+            encontrar novamente. O procolo PROPHET foi proposto para
+            aumentar a probabilidade de entrega e reduzir o gasto de 
+            recursos de rede no <a href="epidemic.html" style="text-decoration: none">protocolo de roteamento epidêmico</a>.<br>
+            <br>
+            No cenário do PROPHET é estimada uma métrica 
+            probabilística chamada previsibilidade de entrega (a,b) 
+            ∈ [0,1] em cada nó A até cada caminho conhecido para 
+            um nó B. Quando um nó encontra outro, são trocados os 
+            respectivos vetores de sumário entre eles, assim como 
+            no roteamento epidêmico.
+            Neste vetor de sumário contem a previsibilidade de 
+            entrega para destinos conhecidos de cada nó.
+            Os cálculos da previsibilidade de entrega possuem 
+            três partes. Os nós atualizam suas métricas de 
+            previsibilidade de entrega quando se conectam.
+            Visitar mais nós resulta em maiores valores de 
+            previsibilidade de entrega. O cálculo é apresentado
+            abaixo, onde Pini ∈ [0,1] é uma constante de 
+            inicialização.
+            <b><p style="text-align:center">P(a,b) = P(a,b)antigo + (1 - P(a,b)antigo)*Pini</p></b>
+        <p>
+            Por outro lado se dois nós não se encontram por longos 
+            períodos, eles trocam mensagens entre si com baixa
+            probabilidade. Então a previsibilidade de entrega 
+            deve envelhecer e ser reduzida no processo. A equação
+            de envelhecimento é apresentada abaixo, onde γ ∈ [0;1)
+            representa a constante de envelhecimento, e k é o 
+            tempo decorrido desde a última vez que a métrica foi
+            envelhecida. As unidades de tempo podem diferir e 
+            devem ser definidas de acordo com a aplicação e o 
+            atraso esperado para a rede em questão.
+            <b><p style="text-align: center">P(a,b) = P(a,b)antigo*γ^k</p></b>
+        <p>
+            A previsibilidade de entrega também possui a propriedade
+            de transitividade que diz que se o nó A frequentemente 
+            encontra o nó B e o nó B frequentemente encontra o nó C,
+            então o nó C provavelmente é um bom nó para encaminhar 
+            mensagens até o nó A. A equação abaixo mostra como a 
+            transitividade afeta a previsibilidade de entrega, 
+            onde β ∈ [0,1] é uma constante de escala que decide
+            o quão grande deve ser o impacto da transitividade 
+            sobre a previsibilidade de entrega.
+            <b><p style="text-align: center">P(a,c) = P(a,c)antigo + (1 - P(a,c)antigo)*P(a,b)*P(b,c)*β</p></b>
+        <p>    
+            Diferente dos protocolos de roteamento convencionais
+            que baseiam suas escolhas de roteamento e seleção de 
+            caminho para um destino em métricas simples como 
+            caminho mais curto ou de menor custo, a estratégia de 
+            encaminhamento no PROPHET é mais complexa. Quando um
+            nó recebe uma mensagem e não possui rota para o destino,
+            armazena a mensagem em seu buffer e a encaminha a outro 
+            nó quando o encontra. Quando um nó encontra um vizinho
+            com baixa previsibilidade de entrega não há garantia 
+            de que ele encontrará outro nó com uma previsibilidade
+            de entrega mais alta durante o tempo de vida da mensagem.<br><br>
+            A diferença básica entre o PROPHET e o roteamento epidêmico
+            reside em suas estratégias de encaminhamento. Quando dois 
+            nós se encontram, o PROPHET permite a transferência da 
+            mensagem a outro nó apenas se a previsibilidade de entrega 
+            ao destino da mensagem for maior nesse nó.
         </p>
     </div>
 </body>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>Redes tolerantes a atrasos</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+<body>
+
+    <h1>DTN - Delay Tolerant Networks</h1>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="introduction.html">Introdução</a></li>
+        <li><a class="active" href="spray.html">Spray and Wait Rounting Protocol</a></li>
+        <li><a href="epidemic.html">Epidemic Routing Protocol</a></li>
+        <li><a href="prophet.html">PROPHET - Probabilistic Routing Protocol using History of Encounters and Transivity</a></li>
+        <li><a href="forwarding.html">Forwarding Strategy</a></li>
+        <li style="float:right"><a class="references" href="references.html">Referências</a></li>
+    </ul>
+    <div class="left">
+        <h2>Spray and Wait Rounting Protocol</h2>
+        <p>
+            O protocolo foi proposto com a finalidade de controlar
+            o nível de difusão das mensagens através da rede.
+            Assim como o <a href="epidemic.html" style="text-decoration: none">protocolo de roteamento epidêmico</a>,
+            o protocolo de disparada e espera não necessita 
+            de conhecimento prévio da topologia da rede ou 
+            do padrão de mobilidade dos nós. Ele simplesmente 
+            encaminha múltiplas cópias da mensagem recebida
+            utilizando inundação. A diferença entre disparada e 
+            espera e o roteamento epidêmico é que aquele difunde 
+            apenas L cópias da mensagem. Foi provado que o nível 
+            mínimo de L para se obter o atraso esperado para a 
+            entrega da mensagem depende do número de nós na rede 
+            e não do tamanho da rede e seu alcance de transmissão.<br>
+            <br>
+            O roteamento de disparada e espera consiste em duas fases:<br>
+            1) Fase de disparada: Nessa fase um número limitado de 
+            cópias (L) de mensagens é difundido na rede pela fonte
+            e por alguns outros nós que mais tarde recebem uma 
+            cópia da mensagem.<br>
+            2) Fase de espera: Depois de difundir todas as cópias 
+            das mensagens e o destino não é encontrado por um nó 
+            com a cópia da mensagem na fase de disparada, cada nó 
+            que carrega uma cópia da mensagem tenta entregar a 
+            própria cópia ao destinatário por transmissão direta 
+            de forma independente.<br>
+            <br>
+            <img src="./Imagens/spray_and_wait_routing.png" style="width:700px; height:400px" alt="Roteamento disparada e espera">
+            <p style="text-align: center">Adaptado de: "The Performance of DTN Routing Protocols: A Comparative Survey" A. Alaoui, S. Agoujil, M. Hajar, Y. Qaraai</p>
+        <p>
+            Para melhorar a performance do algoritmo foi proposto 
+            o esquema binário de disparada e espera. Esse método
+            fornece os melhores resultados se todos os padrões 
+            de mobilidade dos nós da rede são independentes e 
+            indenticamente distribuídos com a mesma probabilidade 
+            de distribuição. De acordo com a disparada e espera 
+            binária, a fonte cria L cópias da mensagem original e,
+            então, assim que um nó é encontrado, metade delas é 
+            transmitida e o restante é mantida. Esse processo é 
+            realizado com outros nós de relay até que reste 
+            apenas uma única cópia da mensagem. Quando isso ocorre
+            o nó fonte aguarda para encontrar o destinatário 
+            diretamente e realizar uma transmissão direta.<br><br>
+            São diferentes métodos limitando o número de 
+            mensagens distribuídas e diminuindo o consumo de 
+            recursos em nós intermediários, mas oferecendo melhor 
+            resultado em termos de performance se comparado ao 
+            roteamento epidêmico.
+
+            Protocolo que consiste em enviar e aguardar
+            confirmação
+        </p>
+    </div>
+</body>
+            
+</html>
